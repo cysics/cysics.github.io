@@ -1,10 +1,10 @@
 ---
+layout: single
 title: "카카오톡 대화 전처리"
 author: "김종헌"
 date: '2022-01-18'
 output:
-  github_document:
-    html_preview: false
+  github_document
 ---
 
 ```{r setup, include=FALSE}
