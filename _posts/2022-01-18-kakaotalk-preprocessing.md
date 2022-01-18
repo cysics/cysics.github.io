@@ -28,7 +28,8 @@ library(tidyverse)
     ## x dplyr::lag()    masks stats::lag()
 
 ``` r
-read.csv("../떡볶이 설문.csv") %>% as_tibble() %>% select(성별:연령, 좋았던곳이유개선점) %>% head()
+read.csv("../떡볶이 설문.csv") %>% as_tibble() %>% 
+    select(성별:연령, 좋았던곳이유개선점) %>% head()
 ```
 
     ## # A tibble: 6 x 3
