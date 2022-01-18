@@ -1,13 +1,12 @@
-카카오톡 대화 전처리
+카카오톡 대화 전처리(1)
 ================
 김종헌
 2022-01-18
 
-## GitHub Documents
+## 데이터 다운로드
 
-This is an R Markdown format used for publishing markdown documents to
-GitHub. When you click the **Knit** button all R code chunks are run and
-a markdown file (.md) suitable for publishing to GitHub is generated.
+데스크탑 컴퓨터에서도 카카오톡 대화를 다운 받을 수 있다. 하지만 데이터
+전처리를 쉽게 하려면 스마트폰에서 텍스트를 내보내는 것이 좋다.
 
 ## Including Code
 
