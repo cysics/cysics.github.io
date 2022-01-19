@@ -6,7 +6,7 @@ author_profile: false
 sidebar:
   nav: "docs"
 ---
-김종헌
+카톡 대화방 내용 내려받아서 분석하기 위한 전처리 과정을 설명합니다.
 
 ## 데이터 다운로드
 
