@@ -1,7 +1,7 @@
 ---
 title: "카카오톡 대화 전처리(1)"
 categories: TextMining
-tag: R, 카카오톡, 전처리, tidyverse, TextMing
+tag: [R], [카카오톡], [전처리], [tidyverse]
 ---
 김종헌
 
