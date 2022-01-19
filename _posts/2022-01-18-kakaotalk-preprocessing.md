@@ -1,5 +1,6 @@
 ---
 title: "카카오톡 대화 전처리(1)"
+categories: TextMining
 ---
 김종헌
 
