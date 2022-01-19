@@ -5,22 +5,26 @@ tag: [카카오톡, 전처리, tidyverse]
 author_profile: false
 sidebar:
   nav: "docs"
+toc: true
+toc_sticky: true
 ---
 카톡 대화방 내용 내려받아서 텍스트 마이닝 하기 전에 필요한 전처리 과정을 설명합니다. 
 
 ## 데이터 다운로드
 
 데스크탑 컴퓨터에서도 카카오톡 대화를 다운 받을 수 있다. 하지만 데이터 전처리를 쉽게 하려면 스마트폰에서 텍스트를 내보내는 것이 좋다.  
+
 ![](https://raw.githubusercontent.com/cysics/cysics.github.io/master/_posts/2022-01-18-kakaotalk-preprocessing_files/figure-gfm/kakaotalk.jpg){:style="display:block; margin-left:auto; margin-right:auto"}  
+
 스마트폰에서 카톡방의 맨 오른쪽 위(빨간색)을 터치한 후 오른쪽 맨 아래쪽에 설정(초록색)을 터치한다. 중간정도 보면 대화내용 내보내기(노란색)를 터치한 후 텍스트만 보내기(보라색)을 터치하면 위 그림의 오른쪽과 같이 어떤 형태로 텍스트를 내보낼지 선택할 수 있다. 본인이 원하는 방법(예, 갈색)를 이용하여 텍스트 파일을 받을 수 있다.
 
 ## 최종 결과 확인
 
-다음과 같이 데이터를 전처리하면 된다:
+다음과 같이 데이터를 전처리하면 된다. 참고로 실명은 기호로 대체하였다.
 
 ``` r
 library(tidyverse)
-(rdata <- read_file("../KakaoTalkChatsSample.txt") %>%                       # txt 파일 읽어오기
+(rdata <- read_file("KakaoTalkChatsSample.txt") %>%                          # txt 파일 읽어오기
     strsplit("\r") %>% unlist() %>%                                          # 같은 사람의 글은 한 줄로
     gsub("\n", "", .) %>% as_tibble() %>%                                    # 줄바꿈 없애기
     filter(grepl("^\\d.*,.*:", value)) %>%                                   # 숫자시작 , : 있는 것만
@@ -44,13 +48,13 @@ library(tidyverse)
     ## 11 2019년 3월 2일 오후 8:22   △△△   https://www.youtube.com/watch?v=Iua-Z36J80A 
     ## 12 2019년 3월 2일 오후 8:22   △△△   R에서 10줄로 구현한 keras입니다. ^^         
 
-## 전처리 코드 설명
+## 코드 설명
 ### 여러 행 만들기
-read\_file() 함수를 이용해서 txt를 불러온다. 이 때 불러온 결과는 단일 데이터를 가진 벡터이다. 
+read\_file() 함수를 이용해서 txt를 불러온다. 이 때 불러온 결과는 다음과 같이 단일 데이터를 가진 벡터가 된다. 
 
 ![](https://raw.githubusercontent.com/cysics/cysics.github.io/master/_posts/2022-01-18-kakaotalk-preprocessing_files/figure-gfm/row_data.jpg){:style="display:block; margin-left:auto; margin-right:auto"}  
 
-strsplit() 함수에서 “\\r”을 기준으로 데이터를 여러 개로 나눈다. 그 후에 unlist() 함수로 여러 데이터를 가진 벡터가 만들어진다.
+strsplit() 함수에서 “\\r”을 기준으로 데이터를 여러 개로 나눈다. 그 후에 unlist() 함수를 적용하면 여러 데이터를 가진 하나의 벡터가 만들어진다.
 
 ![](https://raw.githubusercontent.com/cysics/cysics.github.io/master/_posts/2022-01-18-kakaotalk-preprocessing_files/figure-gfm/strsplit.jpg){:style="display:block; margin-left:auto; margin-right:auto"} 
 
