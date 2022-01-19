@@ -47,17 +47,26 @@ library(tidyverse)
 ## 전처리 코드 설명
 ### 여러 행 만들기
 read\_file() 함수를 이용해서 txt를 불러온다. 이 때 불러온 결과는 단일 데이터를 가진 벡터이다. 
+
 ![](https://raw.githubusercontent.com/cysics/cysics.github.io/master/_posts/2022-01-18-kakaotalk-preprocessing_files/figure-gfm/row_data.jpg){:style="display:block; margin-left:auto; margin-right:auto"}  
+
 strsplit() 함수에서 “\\r”을 기준으로 데이터를 여러 개로 나눈다. 그 후에 unlist() 함수로 여러 데이터를 가진 벡터가 만들어진다.
+
 ![](https://raw.githubusercontent.com/cysics/cysics.github.io/master/_posts/2022-01-18-kakaotalk-preprocessing_files/figure-gfm/strsplit.jpg){:style="display:block; margin-left:auto; margin-right:auto"} 
+
 “\\n”을 기준으로 나누게 되면 카톡을 작성할 때 줄바꿈해서 작성한 글의 경우 여러 개의 데이터로 나눠지게 된다. 줄바꿈을 사용해서 작성한 글도 한 사람이 작성했으면 하나의 데이터로 묶이게 만들어야 하는데 그렇게 하기 위해서는 “\\n”이 아닌 “\\r”을 기준으로 데이터를 분리해야 한다. 문제는 list 형태로 나눠지기 때문에 unlist() 함수를 통해 여러 개의 데이터를 가진 벡터로 만들어야 한다. 여기서 또 다른 문제가 생기는데 “\\r”을 기준으로 줄바꿈한 후 바로 다음 글이 이어지다보니 날짜 앞에 “\\n”이 놓이게 된다. 그래서 gsub() 함수를 이용해서 “\\n”을 “”로 만들어서 없애주어야 한다. 
+
 ![](https://raw.githubusercontent.com/cysics/cysics.github.io/master/_posts/2022-01-18-kakaotalk-preprocessing_files/figure-gfm/gsub.jpg){:style="display:block; margin-left:auto; margin-right:auto"} 
+
 이렇게 해서 만든 데이터를 as\_tibble() 함수를 이용해서 tibble 형태의 데이터로 만든다. 이 때 자동으로 value라는 변수로 묶이게 된다.  
+
 ![](https://raw.githubusercontent.com/cysics/cysics.github.io/master/_posts/2022-01-18-kakaotalk-preprocessing_files/figure-gfm/tibble.jpg){:style="display:block; margin-left:auto; margin-right:auto"} 
   
 ### 유효한 행만 선택
 지금까지 전처리된 데이터를 살펴보면 대부분의 데이터는 글을 작성한 "일시, 유저이름 : 작성 내용" 형태로 구성되어 있다. 어떤 데이터는 숫자가 아닌 한글로 시작하는 문구도 있고 날짜가 바뀌었을 때 처음 글을 쓴 시각만 기록된 것도 있다. 실제 구성원들이 작성한 글을 분석하는 것이 의미가 있기 때문에 이런 내용들은 분석에서 제외하는 것이 좋다. 이를 위해 filter() 함수를 통해 일시, 유저이름, 작성내용이 모두 있는 조건을 만족하는 데이터만 선택해야 한다. 일시는 숫자로 시작하는 특징이 있으며 일시와 유저 이름 사이에는 콤마(,)가 들어 있다. 그리고 유저이름과 작성 내용 사이에는 콜론(:)이 있다. 따라서 숫자로 시작하며, 콤마(,)가 있고, 콜론(:)이 있는 데이터만 선택해야 한다.  
+
 ![](https://raw.githubusercontent.com/cysics/cysics.github.io/master/_posts/2022-01-18-kakaotalk-preprocessing_files/figure-gfm/filter.jpg){:style="display:block; margin-left:auto; margin-right:auto"}
+
 grepl() 함수는 특정 변수에 지정한 내용이 있는지의 여부를 TRUE, FALSE 형태로 출력한다. 이를 이용해 조건에 맞는(TRUE) 데이터만 선택할 수 있다.
 정규표현식을 통해 원하는 조건에 해당하는 글을 선택할 수 있다. 다소 어려울 수 있어 차근 차근 설명하면 다음과 같다. 
 “\\\d”는 숫자를 의미한다. 이를 활용하면 숫자가 포함된 데이터만 선택할 수도 있다. 
@@ -69,8 +78,11 @@ grepl() 함수는 특정 변수에 지정한 내용이 있는지의 여부를 TR
 
 ### 일시, 유저, 내용 분리
 separate() 함수는 특정 조건에 맞는 글자를 기준으로 변수를 분리해주는 기능을 한다. 우선 “일시”와 나머지 내용을 구분하면 다음과 같다.
+
 ![](https://raw.githubusercontent.com/cysics/cysics.github.io/master/_posts/2022-01-18-kakaotalk-preprocessing_files/figure-gfm/separate1.jpg){:style="display:block; margin-left:auto; margin-right:auto"}
+
 separate(value, into=c(“date”, “text”), sep=“,”)라고 쓰면 value에 있는 텍스트에서 콤마(,)와 띄어쓰기(“,”)를 기준으로 왼쪽과 오른쪽을 각각 date, text로 명명된 변수로 분리하라는 뜻이 된다. 그런데 사용자가 콤마(,)를 사용해서 글을 작성한 경우 여러 개의 콤마(,)가 있을 수 있다. 이 때 맨 처음에 있는 콤마(,)를 기준으로 두 개의 변수로 분리하고 나머지 콤마(,)는 분리하지 말고 하나로 합쳐서 표현하라는 의미로 extra=“merge”를 추가한다. 같은 원리로 그렇게 만들어진 text를 콜론(:)을 기준으로 name, coment로 분리하라는 함수가 separate(text, into=c(“name”, “coment”), sep=“ : ”, extra=”merge”) 이다.  
+
 ![](https://raw.githubusercontent.com/cysics/cysics.github.io/master/_posts/2022-01-18-kakaotalk-preprocessing_files/figure-gfm/separate2.jpg){:style="display:block; margin-left:auto; margin-right:auto"}
   
 ### 전처리 결과 확인
