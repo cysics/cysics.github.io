@@ -7,13 +7,16 @@
 
 데스크탑 컴퓨터에서도 카카오톡 대화를 다운 받을 수 있다. 하지만 데이터
 전처리를 쉽게 하려면 스마트폰에서 텍스트를 내보내는 것이 좋다.  
+
 <img src="2022-01-18-kakaotalk-preprocessing_files/figure-gfm/kakaotalk.jpg" style="width:100.0%" />  
-  
+
 스마트폰에서 카톡방의 맨 오른쪽 위(빨간색)을 터치한 후 오른쪽 맨
 아래쪽에 설정(초록색)을 터치한다. 중간정도 보면 대화내용
 내보내기(노란색)를 터치한 후 텍스트만 보내기(보라색)을 터치하면 위
 그림의 오른쪽과 같이 어떤 형태로 텍스트를 내보낼지 선택할 수 있다.
 본인이 원하는 방법(예, 갈색)를 이용하여 텍스트 파일을 받을 수 있다.
+
+
 
 ## 원하는 형태의 데이터
 
@@ -24,30 +27,30 @@ library(tidyverse)
 ```
 
     ## -- Attaching packages --------------------------------------- tidyverse 1.3.1 --
-
+    
     ## v ggplot2 3.3.5     v purrr   0.3.4
     ## v tibble  3.1.6     v dplyr   1.0.7
     ## v tidyr   1.1.4     v stringr 1.4.0
     ## v readr   2.1.1     v forcats 0.5.1
-
+    
     ## -- Conflicts ------------------------------------------ tidyverse_conflicts() --
     ## x dplyr::filter() masks stats::filter()
     ## x dplyr::lag()    masks stats::lag()
 
 ``` r
 (rdata <- read_file("../KakaoTalkChatsSample.txt") %>%                           # txt 파일 읽어오기
-        strsplit("\r") %>% unlist() %>%                                          # 같은 사람의 글은 한 줄로
-        gsub("\n", "", .) %>% as_tibble() %>%                                    # 줄바꿈 없애고 tibble 형태로
-        filter(grepl("^\\d.*,", value)) %>%                                      # 숫자로 시작하고 ,가 있는 것만 선택
-        separate(value, into=c("date", "text"), sep=", ", extra="merge") %>%     # 날짜와 글 분리
-        separate(text, into=c("name", "coment"), sep=" : ", extra="merge") %>%   # 이름과 글 내용 분리
-        filter(!grepl("님이 들어왔습니다.|님이 나갔습니다.", name)) %>%          # 들어오고 나간 메시지 삭제
-        mutate(date=gsub("년 ", "-", gsub("월 ", "-", gsub("일 ", " ", date))))) # 년월일 대체 및 삭제
+    strsplit("\r") %>% unlist() %>%                                          # 같은 사람의 글은 한 줄로
+    gsub("\n", "", .) %>% as_tibble() %>%                                    # 줄바꿈 없애고 tibble 형태로
+    filter(grepl("^\\d.*,", value)) %>%                                      # 숫자로 시작하고 ,가 있는 것만 선택
+    separate(value, into=c("date", "text"), sep=", ", extra="merge") %>%     # 날짜와 글 분리
+    separate(text, into=c("name", "coment"), sep=" : ", extra="merge") %>%   # 이름과 글 내용 분리
+    filter(!grepl("님이 들어왔|님이 나갔", name)) %>%                           # 들어오고 나간 메시지 삭제
+    mutate(date=gsub("년 ", "-", gsub("월 ", "-", gsub("일 ", " ", date)))))  # 년월일 대체 및 삭제
 ```
 
     ## Warning: Expected 2 pieces. Missing pieces filled with `NA` in 3 rows [1, 4,
     ## 10].
-
+    
     ## # A tibble: 13 x 3
     ##    date                 name  coment                                            
     ##    <chr>                <chr> <chr>                                             
