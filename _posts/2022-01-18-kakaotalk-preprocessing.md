@@ -1,5 +1,5 @@
 ---
-layout: single
+layout: post
 title: "카카오톡 대화 전처리(1)"
 author: "김종헌"
 date: '2022-01-18'
