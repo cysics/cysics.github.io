@@ -4,7 +4,7 @@ categories: TextMining
 tag: [카카오톡, 전처리, tidyverse]
 author_profile: false
 sidebar:
-    nav: "docs"
+  nav: "docs"
 ---
 김종헌
 
