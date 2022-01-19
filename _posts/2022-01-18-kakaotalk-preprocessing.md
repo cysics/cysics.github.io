@@ -7,7 +7,11 @@
 
 데스크탑 컴퓨터에서도 카카오톡 대화를 다운 받을 수 있다. 하지만 데이터 전처리를 쉽게 하려면 스마트폰에서 텍스트를 내보내는 것이 좋다.  
 
-  ![kakaotalk](http://cysics.github.io/_posts/2022-01-18-kakaotalk-preprocessing_files/figure-gfm/kakaotalk.jpg?raw=true)
+  ![kakaotalk](http://github.com/cysics/cysics.github.io/_posts/2022-01-18-kakaotalk-preprocessing_files/figure-gfm/kakaotalk.jpg?raw=true)
+
+```
+<img src="./2022-01-18-kakaotalk-preprocessing_files/figure-gfm/kakaotalk.jpg">
+```
 
 스마트폰에서 카톡방의 맨 오른쪽 위(빨간색)을 터치한 후 오른쪽 맨 아래쪽에 설정(초록색)을 터치한다. 중간정도 보면 대화내용 내보내기(노란색)를 터치한 후 텍스트만 보내기(보라색)을 터치하면 위 그림의 오른쪽과 같이 어떤 형태로 텍스트를 내보낼지 선택할 수 있다. 본인이 원하는 방법(예, 갈색)를 이용하여 텍스트 파일을 받을 수 있다.
 
