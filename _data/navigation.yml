@@ -6,7 +6,7 @@ main:
     url: /tags/
     
 docs:
-  - title: "대목차"대목차
+  - title: "대목차"
     children:
       - title: "Category"
         url: /categories/
