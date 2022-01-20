@@ -9,8 +9,9 @@ toc: true
 toc_sticky: true
 toc_label: "카카오톡 대화 전처리(1)"
 ---
+<div class="notice--success">
 카톡 대화방 내용 내려받아서 행과 열로 된 데이터로 만드는 전처리 과정을 설명합니다. 
-{: .notice--success}
+</div>
 
 ## 데이터 다운로드
 ### 카톡 대화 다운받는 방법
