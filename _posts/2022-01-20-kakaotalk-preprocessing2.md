@@ -11,7 +11,7 @@ toc_sticky: true
 toc_label: "카카오톡 대화 전처리(2)"
 ---
 <div class="notice--success">
-1차로 전처리된 데이터에서 분석에 필요한 각종 변수를 뽑아내는 방법을 적용합니다.
+1차로 전처리된 데이터에서 날짜와 관련된 각종 변수를 뽑아내는 방법을 적용합니다.
 </div>
 ## 미션과 문제
 
@@ -45,7 +45,7 @@ library(lubridate)
 
     ## # A tibble: 12 x 8
     ##    date       name  coment                         ampm   year month wday    day
-    ##    <date>     <chr> <chr>                          <chr> <dbl> <dbl> <chr> <dbl>
+    ##    <date>     <chr> <chr>                          <chr> <dbl> <dbl> <chr>   <dbl>
     ##  1 2019-02-27 ◇◇◇   오늘 강연 고맙게 잘~ 들었습니  PM     2019     2 수요일~    58
     ##  2 2019-02-27 □□□   (굿)                            PM     2019     2 수요일~    58
     ##  3 2019-02-28 □□□   사진                            PM     2019     2 목요일~    59
