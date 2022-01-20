@@ -7,6 +7,7 @@ sidebar:
   nav: "docs"
 toc: true
 toc_sticky: true
+toc_label: "카카오톡 대화 전처리(1)"
 ---
 카톡 대화방 내용 내려받아서 텍스트 마이닝 하기 전에 필요한 전처리 과정을 설명합니다. 
 
