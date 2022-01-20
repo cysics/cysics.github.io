@@ -8,6 +8,11 @@ main:
 docs:
   - title: "Contents"
     children:
+      - title: "텍스트 마이닝(Text Mining)"
+        url: https://cysics.github.io/categories/#textmining
+        
+  - title: "Category and Tag"
+    children:
       - title: "Category"
         url: /categories/
       - title: "Tag"
