@@ -1,5 +1,6 @@
 ---
 title: "카카오톡 대화 전처리(1)"
+last_modified_at: 2022-01-20
 categories: TextMining
 tag: [카카오톡, 전처리, tidyverse]
 author_profile: false
@@ -55,6 +56,11 @@ library(tidyverse)
     ## 12 2019년 3월 2일 오후 8:22   △△△   R에서 10줄로 구현한 keras입니다. ^^         
 
 ## 코드 설명
+### Youtube 영상
+{% include video id="gOrInnEMpYY" provider="youtube" %}
+
+영상이 편한 분은 영상을, 글이 편한 분은 다음 글을 참고하시면 되겠습니다. 
+
 ### 여러 행 만들기
 read\_file() 함수를 이용해서 txt를 불러옵니다. 이 때 불러온 결과는 다음과 같이 단일 데이터를 가진 벡터가 됩니다. 
 
