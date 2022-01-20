@@ -23,6 +23,7 @@ toc_label: "카카오톡 대화 전처리(1)"
 <div class="notice--success">
 [예제 파일 다운](https://raw.githubusercontent.com/cysics/cysics.github.io/master/data/KakaoTalkChatsSample.txt) 받아 연습해 볼 수 있습니다. 마우스 오른쪽 버튼으로 클릭해서 “다른 이름으로 링크 저장”해서 다운 받을 수 있습니다.
 </div>
+{: .notice--danger}
 
 ## 최종 결과 확인
 
