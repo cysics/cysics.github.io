@@ -8,7 +8,7 @@ sidebar:
   nav: "docs"
 toc: true
 toc_sticky: true
-toc_label: "카카오톡 대화 전처리(1)"
+toc_label: "카카오톡 대화 전처리(2)"
 ---
 
 <div class="notice--success">
