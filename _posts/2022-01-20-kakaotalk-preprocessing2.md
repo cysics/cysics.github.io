@@ -52,6 +52,10 @@ library(lubridate)
     ## 12  2019       1     3 토요일    61     8 AM    △△△   R에서 10줄로 구현한 keras~
 
 ## 코드 설명
+### Youtube 영상
+{% include video id="wzwbzqFYF9g" provider="youtube" %}
+
+영상이 편한 분은 영상을, 글이 편한 분은 다음 글을 참고하시면 되겠습니다. 
 
 ### 날짜 형식으로 만들기
 
