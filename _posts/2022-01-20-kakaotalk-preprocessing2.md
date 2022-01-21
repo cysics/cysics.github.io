@@ -1,7 +1,15 @@
-카카오톡 대화 전처리(2)
-================
-김종헌
-2022-01-20
+---
+title: "카카오톡 대화 전처리(2)"
+last_modified_at: 2022-01-21
+categories: TextMining
+tag: [카카오톡, 전처리, tidyverse, lubridate]
+author_profile: false
+sidebar:
+  nav: "docs"
+toc: true
+toc_sticky: true
+toc_label: "카카오톡 대화 전처리(1)"
+---
 
 <div class="notice--success">
 
@@ -27,13 +35,6 @@
 
 ``` r
 library(tidyverse)
-rdata <- read_file("../data/KakaoTalkChatsSample.txt") %>%                # txt 파일 읽어오기
-    strsplit("\r") %>% unlist() %>%                                       # 같은 사람의 글은 한 줄로
-    gsub("\n", "", .) %>% as_tibble() %>%                                 # 줄바꿈 없애기
-    filter(grepl("^\\d.*,.*:", value)) %>%                                # 숫자시작 , : 있는 것만
-    separate(value, into=c("date", "text"), sep=", ", extra="merge") %>%  # 날짜와 글 분리
-    separate(text, into=c("name", "coment"), sep=" : ", extra="merge")    # 이름과 글 내용 분리
-
 library(lubridate)
 (data <- rdata %>% 
     mutate(date=parse_date_time(date, c("%Y-%m-%d %p %H:%M"))) %>%      # 날짜 형식으로
