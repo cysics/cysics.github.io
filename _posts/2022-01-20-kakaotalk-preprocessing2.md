@@ -35,8 +35,17 @@ toc_label: "카카오톡 대화 전처리(2)"
 
 ``` r
 library(tidyverse)
+rdata <- read_file("../data/KakaoTalkChatsSample.txt") %>%                # txt 파일 읽어오기
+    strsplit("\r") %>% unlist() %>%                                       # 같은 사람의 글은 한 줄로
+    gsub("\n", "", .) %>% as_tibble() %>%                                 # 줄바꿈 없애기
+    filter(grepl("^\\d.*,.*:", value)) %>%                                # 숫자시작 , : 있는 것만
+    separate(value, into=c("date", "text"), sep=", ", extra="merge") %>%  # 날짜와 글 분리
+    separate(text, into=c("name", "coment"), sep=" : ", extra="merge")    # 이름과 글 내용 분리
+
 library(lubridate)
 (data <- rdata %>% 
+    # mutate(date=gsub("년 ", "-", gsub("월 ", "-", gsub("일 ", " ", date)))) %>% 
+    # mutate(date=gsub("오전", "AM", gsub("오후", "PM", date))) %>% 
     mutate(date=parse_date_time(date, c("%Y-%m-%d %p %H:%M"))) %>%      # 날짜 형식으로
     mutate(year=year(date), quarter=quarter(date), month=month(date),   # 년, 분기, 월 변수 만들기
            wday=weekdays(date), yday=yday(date), hour=hour(date),       # 요일, 일수, 시간 변수 만들기
@@ -69,7 +78,12 @@ library(lubridate)
 parse\_date\_time() 함수를 사용하여 원하는 날짜 형식으로 바꿀 수
 있습니다. Y는 년도, m은 월, d는 일, p는 오전 오후, H는 시간, M은 분을
 의미합니다. 만약 초까지 포함하고 있는 데이터가 있다면 S를 추가해 주어야
-합니다.
+합니다. 주석 처리된 2줄이 있습니다. 데스크탑에 R과 Rstudio를 설치하여
+분석하는 경우 없어도 되는 코드인데, Rstudio Cloud에서 분석할 때는 필요한
+코드입니다. 데이터에 있는 한글은 제대로 인식하는데 날짜에 있는 한글은
+인식을 못하는 것 같아요. 강제로 한글을 영문으로 바꾸어 주어야 날짜
+형식으로 변환이 되네요. 추후에 이 부분도 해결이 될 것 같긴 합니다만
+임시로 코드를 추가했습니다.
 
 ### 날짜 관련 변수 만들기
 
