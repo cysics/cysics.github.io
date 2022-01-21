@@ -42,7 +42,7 @@ n_by_name %>% ggplot(aes(n, reorder(name, n), fill=name)) +
     labs(x = "발언 수", y = "", title = "발언 수가 많은 상위 10명")
 ```
 
-![](2022-01-21-kakaotalk-eda1_files/figure-gfm/n_by_name-1.png){: .center-image }
+![](https://raw.githubusercontent.com/cysics/cysics.github.io/master/_posts/2022-01-21-kakaotalk-eda1_files/figure-gfm/n_by_name-1.png){: .center-image }
 
 ### 오전과 오후 대화량 비교
 
@@ -58,7 +58,7 @@ data %>% select(ampm) %>% table() %>% as_tibble() %>%
     labs(x = "발언 수", y = "", title = "오전과 오후 대화량 비교")
 ```
 
-![](2022-01-21-kakaotalk-eda1_files/figure-gfm/n_by_ampm-1.png){: .center-image }
+![](https://raw.githubusercontent.com/cysics/cysics.github.io/master/_posts/2022-01-21-kakaotalk-eda1_files/figure-gfm/n_by_ampm-1.png){: .center-image }
 
 ### 요일별 대화량 비교1
 
@@ -74,7 +74,7 @@ data %>% select(wday) %>% table() %>% as_tibble() %>%
     labs(x = "발언 수", y = "", title = "요일별 대화량 비교")
 ```
 
-![](2022-01-21-kakaotalk-eda1_files/figure-gfm/n_by_week1-1.png){: .center-image }
+![](https://raw.githubusercontent.com/cysics/cysics.github.io/master/_posts/2022-01-21-kakaotalk-eda1_files/figure-gfm/n_by_week1-1.png){: .center-image }
 
 ### 요일별 대화량 비교2
 
@@ -91,7 +91,7 @@ data %>% select(wday) %>% table() %>% as_tibble() %>%
     labs(x="", y="발언 수", title = "요일별 대화량 비교")
 ```
 
-![](2022-01-21-kakaotalk-eda1_files/figure-gfm/n_by_week2-1.png){: .center-image }
+![](https://raw.githubusercontent.com/cysics/cysics.github.io/master/_posts/2022-01-21-kakaotalk-eda1_files/figure-gfm/n_by_week2-1.png){: .center-image }
 
 ## 코드 설명
 
