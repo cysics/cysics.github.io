@@ -53,7 +53,7 @@ data %>% group_by(ampm) %>% summarise(n=n()) %>%
     theme(aspect.ratio=1/4)
 ```
 
-![](https://raw.githubusercontent.com/cysics/cysics.github.io/master/_posts/2022-01-21-kakaotalk-eda1_files/figure-gfm/n_by_ampm-1.png){:style="display:block; margin-left:auto; margin-right:auto"}
+![](https://raw.githubusercontent.com/cysics/cysics.github.io/master/_posts/2022-01-21-kakaotalk-eda1_files/figure-gfm/n_by_ampm-1.jpg){:style="display:block; margin-left:auto; margin-right:auto"}
 
 ### 요일별 대화량 비교1
 
@@ -143,7 +143,7 @@ data %>% filter(year %in% 2020:2021) %>%
     theme(aspect.ratio=3/8)
 ```
 
-![](https://raw.githubusercontent.com/cysics/cysics.github.io/master/_posts/2022-01-21-kakaotalk-eda1_files/figure-gfm/n_by_quarter2-1.png){:style="display:block; margin-left:auto; margin-right:auto"}
+![](https://raw.githubusercontent.com/cysics/cysics.github.io/master/_posts/2022-01-21-kakaotalk-eda1_files/figure-gfm/n_by_quarter2-1.jpg){:style="display:block; margin-left:auto; margin-right:auto"}
 
 ### 년도별 발언수
 
@@ -160,7 +160,7 @@ data %>% filter(year %in% 2020:2021) %>%
     theme(aspect.ratio=1/4)
 ```
 
-![](https://raw.githubusercontent.com/cysics/cysics.github.io/master/_posts/2022-01-21-kakaotalk-eda1_files/figure-gfm/n_by_year-1.png){:style="display:block; margin-left:auto; margin-right:auto"}
+![](https://raw.githubusercontent.com/cysics/cysics.github.io/master/_posts/2022-01-21-kakaotalk-eda1_files/figure-gfm/n_by_year-1.jpg){:style="display:block; margin-left:auto; margin-right:auto"}
 
 ## 코드 설명
 
