@@ -61,7 +61,7 @@ data %>% ggplot(aes(x=hour, fill=wday)) + geom_density(adjust=3, alpha=0.3)
 ``` r
 data %>% 
     # mutate(wday=factor(wday, levels=c("일요일","토요일","금요일","목요일","수요일","화요일","월요일"))) %>% 
-    mutate(wday=factor(wday, levels=c("일요일","토요일","금요일","목요일","수요일","화요일","월요일"))) %>% 
+    mutate(wday=factor(wday, levels=c("Sunday","Saturday","Friday","Thursday","Wednesday","Tuesday","Monday"))) %>% 
     ggplot(aes(x=hour, y=wday, fill=wday)) + 
     geom_density_ridges(show.legend=F, bandwidth=1) +     # 확률밀도함수 그래프를 펼치기
     theme_ridges() +                                      # 그래프 테마 적용
@@ -70,6 +70,8 @@ data %>%
 ```
 
 ![](https://raw.githubusercontent.com/cysics/cysics.github.io/master/_posts/2022-01-25-kakaotalk-eda3_files/figure-gfm/density_by_hour_per_week2-1.png){:style="display:block; margin-left:auto; margin-right:auto"}
+
+요일이 영문으로 표시되는 경우의 코드가 위와 같고 요일이 한글일 경우 한글 요일에 해당하는 코드의 주석(#)을 없애주고 영어로 된 요일과 관련된 코드에 주석처리를 해주어야 합니다.
 
 ## 코드 설명
 
