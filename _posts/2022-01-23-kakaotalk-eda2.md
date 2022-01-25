@@ -37,7 +37,7 @@ data %>% group_by(hour) %>% summarise(n=n()) %>%
     labs(x = "시간", y = "발언수", title = "시간에 따른 대화량 비교")
 ```
 
-![](https://raw.githubusercontent.com/cysics/cysics.github.io/master/_posts/2022-01-23-kakaotalk-eda2_files/figure-gfm/n_by_hour-1.png)<!-- -->
+![](https://raw.githubusercontent.com/cysics/cysics.github.io/master/_posts/2022-01-23-kakaotalk-eda2_files/figure-gfm/n_by_hour-1.png){:style="display:block; margin-left:auto; margin-right:auto"}
 
 ### 년도별 시간에 따른 발언수
 
