@@ -36,7 +36,7 @@ rdata <- read_file("KakaoTalkChats.txt") %>%                                 # t
     gsub("\n", "", .) %>% as_tibble() %>%                                    # 줄바꿈 없애기
     filter(grepl("^\\d.*,.*:", value)) %>%                                   # 숫자시작 , : 있는 것만
     separate(value, into=c("date", "text"), sep=", ", extra="merge") %>%     # 날짜와 글 분리
-    separate(text, into=c("name", "coment"), sep=" : ", extra="merge")       # 이름과 글 내용 분리
+    separate(text, into=c("name", "comment"), sep=" : ", extra="merge")       # 이름과 글 내용 분리
 
 data <- rdata %>% 
     mutate(date=gsub("년 ", "-", gsub("월 ", "-", gsub("일 ", " ", date)))) %>%
@@ -45,7 +45,7 @@ data <- rdata %>%
     mutate(year=year(date), quarter=quarter(date), month=month(date),   # 년, 분기, 월 변수 만들기
            wday=weekdays(date), yday=yday(date), hour=hour(date),       # 요일, 일수, 시간 변수 만들기
            ampm=ifelse(hour(date)<12, "AM", "PM")) %>%                  # 오전 오후 변수 만들기
-    select(year:ampm, name, coment)
+    select(year:ampm, name, comment)
 
 ts <- data %>% group_by(year, month) %>% summarise(n=n()) %>% 
     filter(ifelse(year==2019 & month==2, FALSE, ifelse(year>2021, FALSE, TRUE))) %>% 
@@ -178,7 +178,7 @@ NNETAR 모델이 4번째이기 때문에 \[\[4\]\]를 써서 NNETAR 모델을 �
 주어야 합니다. lines() 함수를 이용하여 빨간색으로 실제 값을
 추가하였습니다.
 
-### NNETRA 예측결과와 실제값 비교
+### NNETRA로 향후 2개월 대화량 예측
 
 ``` r
 forecast(nnetar(ts), h=2, PI=TRUE) %>% plot()
