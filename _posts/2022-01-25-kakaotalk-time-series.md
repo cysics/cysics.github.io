@@ -1,7 +1,7 @@
 ---
 title: "카카오톡 대화량 시계열 예측"
 last_modified_at: 2022-01-25
-categories: [텍스트 마이닝, 시계열 예측]
+categories: [텍스트 마이닝, 시계열 분석]
 tag: [카카오톡, 전처리, 시계열, tidyverse, forecast]
 author_profile: false
 sidebar:
