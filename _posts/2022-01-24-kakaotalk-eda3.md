@@ -1,8 +1,8 @@
 ---
 title: "카카오톡 대화 EDA(3)"
-last_modified_at: 2022-01-25
+last_modified_at: 2022-01-24
 categories: [텍스트 마이닝, 탐색적 데이터 분석]
-tag: [카카오톡, 전처리, 데이터 시각화, tidyverse, lubridate, ggplot2]
+tag: [카카오톡, 전처리, 데이터 시각화, tidyverse, ggplot2]
 author_profile: false
 sidebar:
   nav: "docs"
@@ -29,7 +29,7 @@ pacman::p_load(scales, ggthemes, ggridges,    # 시각화 관련 패키지
 data %>% ggplot(aes(x=hour)) + geom_density(adjust=3, fill="lightblue", alpha=0.5)
 ```
 
-![](https://raw.githubusercontent.com/cysics/cysics.github.io/master/_posts/2022-01-25-kakaotalk-eda3_files/figure-gfm/density_by_hour-1.png){:style="display:block; margin-left:auto; margin-right:auto"}
+![](https://raw.githubusercontent.com/cysics/cysics.github.io/master/_posts/2022-01-24-kakaotalk-eda3_files/figure-gfm/density_by_hour-1.png){:style="display:block; margin-left:auto; margin-right:auto"}
 
 ### 년도별 시간에 따른 발언수
 
@@ -42,7 +42,7 @@ data %>% ggplot(aes(x=hour, fill=factor(year))) +
     labs(x = "시간", y = "density", title = "년도별 시간에 따른 대화 밀도 비교", fill="year")
 ```
 
-![](https://raw.githubusercontent.com/cysics/cysics.github.io/master/_posts/2022-01-25-kakaotalk-eda3_files/figure-gfm/density_by_hour_per_year-1.png){:style="display:block; margin-left:auto; margin-right:auto"}
+![](https://raw.githubusercontent.com/cysics/cysics.github.io/master/_posts/2022-01-24-kakaotalk-eda3_files/figure-gfm/density_by_hour_per_year-1.png){:style="display:block; margin-left:auto; margin-right:auto"}
 
 2019년도의 경우 데이터 수가 많지 않아서 절대적인 양이 2020년이나 2021년에 비해 작은 편에 속합니다. 2022년은 더 심해서 몇 일 안 되기 때문에 선 그래프로 분석할 때는 2019년, 2022년 데이터는 제외하고 분석했어야 했습니다. 하지만 확률밀도함수로 그린다면 큰 문제없이 서로 비교할 수 있습니다.
 
@@ -52,7 +52,7 @@ data %>% ggplot(aes(x=hour, fill=factor(year))) +
 data %>% ggplot(aes(x=hour, fill=wday)) + geom_density(adjust=3, alpha=0.3)
 ```
 
-![](https://raw.githubusercontent.com/cysics/cysics.github.io/master/_posts/2022-01-25-kakaotalk-eda3_files/figure-gfm/density_by_hour_per_week1-1.png){:style="display:block; margin-left:auto; margin-right:auto"}
+![](https://raw.githubusercontent.com/cysics/cysics.github.io/master/_posts/2022-01-24-kakaotalk-eda3_files/figure-gfm/density_by_hour_per_week1-1.png){:style="display:block; margin-left:auto; margin-right:auto"}
 
 요일이 너무 많다보니 제대로 비교가 안되는 문제가 있습니다. ggridges 패키지를 이용해서 요일을 분리해서 보면 한결 보기 편합니다. 그 결과는 다음과 같습니다.
 
@@ -69,7 +69,7 @@ data %>%
     labs(x="시간", y="", title="시간대별 대화량")
 ```
 
-![](https://raw.githubusercontent.com/cysics/cysics.github.io/master/_posts/2022-01-25-kakaotalk-eda3_files/figure-gfm/density_by_hour_per_week2-1.png){:style="display:block; margin-left:auto; margin-right:auto"}
+![](https://raw.githubusercontent.com/cysics/cysics.github.io/master/_posts/2022-01-24-kakaotalk-eda3_files/figure-gfm/density_by_hour_per_week2-1.png){:style="display:block; margin-left:auto; margin-right:auto"}
 
 요일이 영문으로 표시되는 경우의 코드가 위와 같고 요일이 한글일 경우 한글 요일에 해당하는 코드의 주석(#)을 없애주고 영어로 된 요일과 관련된 코드에 주석처리를 해주어야 합니다.
 
