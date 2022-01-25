@@ -10,8 +10,16 @@ main:
 docs:
   - title: "Contents"
     children:
+      - title: "데이터 전처리(Data Preprocessing)"
+        url: https://cysics.github.io/categories/#데이터-전처리
+      - title: "탐색적 데이터 분석(EDA)"
+        url: https://cysics.github.io/categories/#탐색적-데이터-분석
+      - title: "머신러닝(Machine Learning)"
+        url: https://cysics.github.io/categories/#머신러닝
+      - title: "시계열 분석(Time Series Analysis)"
+        url: https://cysics.github.io/categories/#시계열 분석
       - title: "텍스트 마이닝(Text Mining)"
-        url: https://cysics.github.io/categories/#textmining
+        url: https://cysics.github.io/categories/#텍스트-마이닝
       - title: "Category"
         url: /categories/
       - title: "Tag"

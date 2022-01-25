@@ -1,7 +1,7 @@
 ---
 title: "카카오톡 대화 EDA(2)"
 last_modified_at: 2022-01-23
-categories: TextMining
+categories: [텍스트 마이닝, 탐색적 데이터 분석]
 tag: [카카오톡, 전처리, 데이터 시각화, tidyverse, lubridate, ggplot2]
 author_profile: false
 sidebar:

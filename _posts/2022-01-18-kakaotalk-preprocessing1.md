@@ -1,7 +1,7 @@
 ---
 title: "카카오톡 대화 전처리(1)"
 last_modified_at: 2022-01-25
-categories: [텍스트 마이닝, 전처리]
+categories: [텍스트 마이닝, 데이터 전처리]
 tag: [카카오톡, 전처리, tidyverse]
 author_profile: false
 sidebar:
