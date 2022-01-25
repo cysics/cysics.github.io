@@ -1,7 +1,7 @@
 ---
 title: "카카오톡 대화 전처리(2)"
 last_modified_at: 2022-01-21
-categories: [TextMining, 전처리]
+categories: [텍스트 마이닝, 전처리]
 tag: [카카오톡, 전처리, tidyverse, lubridate]
 author_profile: false
 sidebar:
@@ -11,7 +11,7 @@ toc_sticky: true
 toc_label: "카카오톡 대화 전처리(2)"
 ---
 <div class="notice--success">
-1차로 전처리된 데이터에서 날짜와 관련된 각종 변수를 뽑아내는 방법을 적용합니다.
+텍스트 마니닝(text Mining) 1차로 전처리된 데이터에서 날짜와 관련된 각종 변수를 뽑아내는 방법을 적용합니다.
 </div>
 
 ## 미션 이해
