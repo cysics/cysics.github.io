@@ -48,7 +48,7 @@ ts <- data %>% group_by(year, month) %>% summarise(n=n()) %>%
 autoplot(ts)
 ```
 
-![](2022-01-25-kakaotalk-time-series_files/figure-gfm/making_ts-1.png)<!-- -->
+![](https://raw.githubusercontent.com/cysics/cysics.github.io/master/_posts/2022-01-25-kakaotalk-time-series_files/figure-gfm/making_ts-1.png){:style="display:block; margin-left:auto; margin-right:auto"}
 
 월별 발언량이 많아지고 있는 경향(trend)가 보입니다. 시계열 모델 중에 trend를 가정한 모델이 적절할 것 같다는 생각이 들지만 구체적인 것은 검증을 해봐야 알 수 있습니다.
 
