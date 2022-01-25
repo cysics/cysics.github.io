@@ -8,7 +8,7 @@ sidebar:
   nav: "docs"
 toc: true
 toc_sticky: true
-toc_label: "카카오톡 대화 EDA(2)"
+toc_label: "카카오톡 대화 EDA(3)"
 ---
 <div class="notice--success">
 연속형 변수에 따른 발언수를 확률밀도함수 그래프로 살펴보았습니다.
