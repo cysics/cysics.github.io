@@ -1,7 +1,7 @@
 ---
 title: "카카오톡 대화 전처리(1)"
-last_modified_at: 2022-01-20
-categories: TextMining
+last_modified_at: 2022-01-25
+categories: [TextMining, 전처리]
 tag: [카카오톡, 전처리, tidyverse]
 author_profile: false
 sidebar:
@@ -36,11 +36,11 @@ library(tidyverse)
     gsub("\n", "", .) %>% as_tibble() %>%                                    # 줄바꿈 없애기
     filter(grepl("^\\d.*,.*:", value)) %>%                                   # 숫자시작 , : 있는 것만
     separate(value, into=c("date", "text"), sep=", ", extra="merge") %>%     # 날짜와 글 분리
-    separate(text, into=c("name", "coment"), sep=" : ", extra="merge"))      # 이름과 글 내용 분리
+    separate(text, into=c("name", "comment"), sep=" : ", extra="merge"))     # 이름과 글 내용 분리
 ```
 
     ## # A tibble: 15 x 3
-    ##    date                       name  coment                                      
+    ##    date                       name  comment                                      
     ##    <chr>                      <chr> <chr>                                       
     ##  1 2019년 2월 27일 오후 11:02 ◇◇◇   오늘 강연 고맙게 잘~ 들었습니다 김OO 교수님~
     ##  2 2019년 2월 27일 오후 11:02 □□□   (굿)                                        
@@ -97,7 +97,7 @@ separate() 함수는 특정 조건에 맞는 글자를 기준으로 변수를 �
 
 ![](https://raw.githubusercontent.com/cysics/cysics.github.io/master/_posts/2022-01-18-kakaotalk-preprocessing_files/figure-gfm/separate1.jpg){:style="display:block; margin-left:auto; margin-right:auto"}
 
-separate(value, into=c(“date”, “text”), sep=“,”)라고 쓰면 value에 있는 텍스트에서 콤마(,)와 띄어쓰기(“,”)를 기준으로 왼쪽과 오른쪽을 각각 date, text로 명명된 변수로 분리하라는 뜻이 됩니다. 그런데 사용자가 콤마(,)를 사용해서 글을 작성한 경우 여러 개의 콤마(,)가 있을 수 있습니다. 이 때 맨 처음에 있는 콤마(,)를 기준으로 두 개의 변수로 분리하고 나머지 콤마(,)는 분리하지 말고 하나로 합쳐서 표현하라는 의미로 extra=“merge”를 추가합니다. 같은 원리로 그렇게 만들어진 text를 콜론(:)을 기준으로 name, coment로 분리하라는 함수가 separate(text, into=c(“name”, “coment”), sep=“ : ”, extra=”merge”) 입니다.  
+separate(value, into=c(“date”, “text”), sep=“,”)라고 쓰면 value에 있는 텍스트에서 콤마(,)와 띄어쓰기(“,”)를 기준으로 왼쪽과 오른쪽을 각각 date, text로 명명된 변수로 분리하라는 뜻이 됩니다. 그런데 사용자가 콤마(,)를 사용해서 글을 작성한 경우 여러 개의 콤마(,)가 있을 수 있습니다. 이 때 맨 처음에 있는 콤마(,)를 기준으로 두 개의 변수로 분리하고 나머지 콤마(,)는 분리하지 말고 하나로 합쳐서 표현하라는 의미로 extra=“merge”를 추가합니다. 같은 원리로 그렇게 만들어진 text를 콜론(:)을 기준으로 name, comment로 분리하라는 함수가 separate(text, into=c(“name”, “comment”), sep=“ : ”, extra=”merge”) 입니다.  
 
 ![](https://raw.githubusercontent.com/cysics/cysics.github.io/master/_posts/2022-01-18-kakaotalk-preprocessing_files/figure-gfm/separate2.jpg){:style="display:block; margin-left:auto; margin-right:auto"}
   

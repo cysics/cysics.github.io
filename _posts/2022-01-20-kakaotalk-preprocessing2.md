@@ -1,7 +1,7 @@
 ---
 title: "카카오톡 대화 전처리(2)"
 last_modified_at: 2022-01-21
-categories: TextMining
+categories: [TextMining, 전처리]
 tag: [카카오톡, 전처리, tidyverse, lubridate]
 author_profile: false
 sidebar:
@@ -16,7 +16,7 @@ toc_label: "카카오톡 대화 전처리(2)"
 
 ## 미션 이해
 
-년도, 월, 일, 요일, 오전 오후, 시간 등 데이터 분석에 필요한 각종 변수를 만들고자 합니다. 이런 변수가 있으면 년도별, 혹은 월별 발언(coment)수를 비교해서 카톡방이 얼마나 활성화 되고 있는지를 알 수 있습니다. 요일별 발언수를 살펴서 어떤 요일에 대화를 많이 주고 받고 어떤 요일에는 대화가 거의 없는지 알 수도 있습니다. 시간별 대화량을 비교할 수도 있고요. 텍스트 마이닝을 할 때 오전과 오후의 토픽이 통계적으로 유의하게 차이가 있는지의 여부도 알 수 있습니다. 이런 다양한 변수를 기준으로 데이터를 분석할 수 있기 때문에 날짜로부터 다양한 변수를 뽑아내는 것입니다.
+년도, 월, 일, 요일, 오전 오후, 시간 등 데이터 분석에 필요한 각종 변수를 만들고자 합니다. 이런 변수가 있으면 년도별, 혹은 월별 발언(comment)수를 비교해서 카톡방이 얼마나 활성화 되고 있는지를 알 수 있습니다. 요일별 발언수를 살펴서 어떤 요일에 대화를 많이 주고 받고 어떤 요일에는 대화가 거의 없는지 알 수도 있습니다. 시간별 대화량을 비교할 수도 있고요. 텍스트 마이닝을 할 때 오전과 오후의 토픽이 통계적으로 유의하게 차이가 있는지의 여부도 알 수 있습니다. 이런 다양한 변수를 기준으로 데이터를 분석할 수 있기 때문에 날짜로부터 다양한 변수를 뽑아내는 것입니다.
 
 ## 최종 결과 확인
 
@@ -32,11 +32,11 @@ library(lubridate)
     mutate(year=year(date), quarter=quarter(date), month=month(date),   # 년, 분기, 월 변수 만들기
            wday=weekdays(date), yday=yday(date), hour=hour(date),       # 요일, 일수, 시간 변수 만들기
            ampm=ifelse(hour(date)<12, "AM", "PM")) %>%                  # 오전 오후 변수 만들기
-    select(year:ampm, name, coment))
+    select(year:ampm, name, comment))
 ```
 
     ## # A tibble: 12 x 9
-    ##     year quarter month wday    yday  hour ampm  name  coment                    
+    ##     year quarter month wday    yday  hour ampm  name  comment                    
     ##    <dbl>   <int> <dbl> <chr>  <dbl> <int> <chr> <chr> <chr>                     
     ##  1  2019       1     2 수요일    58    11 AM    ◇◇◇   오늘 강연 고맙게 잘~ 들었~
     ##  2  2019       1     2 수요일    58    11 AM    □□□   (굿)                      
@@ -67,7 +67,7 @@ library(lubridate)
 
 ### 변수 순서 정렬
 
-select() 함수를 이용해서 year부터 ampm까지, 그리고 그 뒤를 이어 name과 coment가 오도록 순서를 정렬했습니다.
+select() 함수를 이용해서 year부터 ampm까지, 그리고 그 뒤를 이어 name과 comment가 오도록 순서를 정렬했습니다.
 
 ### 예고
 
