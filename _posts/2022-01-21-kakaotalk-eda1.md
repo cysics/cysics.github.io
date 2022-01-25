@@ -11,7 +11,7 @@ toc_sticky: true
 toc_label: "카카오톡 대화 EDA(1)"
 ---
 <div class="notice--success">
-다양한 변수에 따른 발언수를 비교해 보겠습니다.
+다양한 변수에 따른 발언수를 비교해 보겠습니다. 막대 그래프로 표현해 봤습니다.
 </div>
 
 ## 미션 이해
