@@ -121,7 +121,7 @@ collect_metrics(
     ## 2 precision macro          0.810 Preprocessor1_Model1
     ## 3 recall    macro          0.502 Preprocessor1_Model1
 
-정확도는 70%입니다.
+정확도는 71.1%입니다. 데이터가 수천개로 train과 test 데이터가 어떻게 나눠지느냐에 따라 조금씩 달라질 수 있습니다. macro recall이 그닥 높지 않은 것으로보아 쓸만한 정도는 아니네요. 그냥 재미삼아 분석하는 것으로 이해해 주세요. ^^
 
 일반적으로는 여러 머신러닝 알고리즘을 비교해서 평가지표가 좋은
 알고리즘을 선택하는 것이 일반적입니다. 하지만 다른 일반적인 알고리즘의
