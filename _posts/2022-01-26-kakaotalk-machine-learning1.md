@@ -35,7 +35,7 @@ pacman::p_load(ggthemes,                                        # 시각화 관�
 
 initRhino()
 
-rdata <- read_file("../data/KakaoTalkChats.txt") %>%                         # txt 파일 읽어오기
+rdata <- read_file("KakaoTalkChats.txt") %>%                                 # txt 파일 읽어오기
     strsplit("\r") %>% unlist() %>%                                          # 같은 사람의 글은 한 줄로
     gsub("\n", "", .) %>% as_tibble() %>%                                    # 줄바꿈 없애기
     filter(grepl("^\\d.*,.*:", value)) %>%                                   # 숫자시작 , : 있는 것만
