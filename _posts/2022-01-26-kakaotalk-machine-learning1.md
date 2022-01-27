@@ -9,7 +9,9 @@ sidebar:
 toc: true
 toc_sticky: true
 toc_label: "카카오톡 글 쓴이 예측 머신러닝"
-thumbnail: https://raw.githubusercontent.com/cysics/cysics.github.io/master/_posts/2022-01-26-kakaotalk-machine-learning1_files/figure-gfm/post_hoc-2.png
+image:
+  feature: https://raw.githubusercontent.com/cysics/cysics.github.io/master/_posts/2022-01-26-kakaotalk-machine-learning1_files/figure-gfm/post_hoc-2.png
+  thumb: https://raw.githubusercontent.com/cysics/cysics.github.io/master/_posts/2022-01-26-kakaotalk-machine-learning1_files/figure-gfm/post_hoc-2.png
 ---
 <div class="notice--success">
 머신러닝으로 3명이 쓴 글 중 특정 단어를 변수로 글 쓴이를 맞추고 어떤 단어들로 그 글쓴이를 특정하는지도 알아봅니다.
