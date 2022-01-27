@@ -9,9 +9,6 @@ sidebar:
 toc: true
 toc_sticky: true
 toc_label: "카카오톡 글 쓴이 예측 머신러닝"
-image:
-  feature: https://raw.githubusercontent.com/cysics/cysics.github.io/master/_posts/2022-01-26-kakaotalk-machine-learning1_files/figure-gfm/post_hoc-2.png
-  thumb: https://raw.githubusercontent.com/cysics/cysics.github.io/master/_posts/2022-01-26-kakaotalk-machine-learning1_files/figure-gfm/post_hoc-2.png
 ---
 <div class="notice--success">
 머신러닝으로 3명이 쓴 글 중 특정 단어를 변수로 글 쓴이를 맞추고 어떤 단어들로 그 글쓴이를 특정하는지도 알아봅니다.
@@ -21,8 +18,7 @@ image:
 
 다들 비슷한 주제로 비슷한 말들을 하면 글 쓴이를 구별하기 힘듭니다. 특정
 단어나 특정 주제에 집중하는 사람의 대화를 선택하면 단어를 이용해서 글
-쓴이를 특정지을 수 있습니다. 데이터가 많아야 하기 때문에 대화량이 많은
-사람들 중에서 3명을 선택하는 것이 좋습니다. LiblineaR 패키지에서 지원하는 서포트 벡터 머신 알고리즘을 사용하면 어떤 단어로 글 쓴이를 특정짓는지 알아낼 수 있습니다.
+쓴이를 특정지을 수 있습니다. 데이터가 많아야 하기 때문에 대화량이 많은 사람들 중에서 3명을 선택하는 것이 좋습니다. LiblineaR 패키지에서 지원하는 서포트 벡터 머신 알고리즘을 사용하면 어떤 단어로 글 쓴이를 특정짓는지 알아낼 수 있습니다.
 
 ## 최종 결과 확인
 
