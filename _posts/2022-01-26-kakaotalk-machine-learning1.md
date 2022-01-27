@@ -15,8 +15,6 @@ image: /assets/images/image-default.png
 머신러닝으로 3명이 쓴 글 중 특정 단어를 변수로 글 쓴이를 맞추고 어떤 단어들로 그 글쓴이를 특정하는지도 알아봅니다.
 </div>
 
-![]({{ page.image | relative_url}})
-
 ## 미션 이해
 
 다들 비슷한 주제로 비슷한 말들을 하면 글 쓴이를 구별하기 힘듭니다. 특정
