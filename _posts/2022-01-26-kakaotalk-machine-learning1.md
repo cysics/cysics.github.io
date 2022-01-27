@@ -2,7 +2,7 @@
 title: "카카오톡 글 쓴이 예측 머신러닝"
 last_modified_at: 2022-01-26
 categories: [텍스트 마이닝, 머신러닝]
-thumbnail: /2022-01-26-kakaotalk-machine-learning1_files/figure-gfm/post_hoc-1.png
+thumbnail: https://raw.githubusercontent.com/cysics/cysics.github.io/master/_posts/2022-01-26-kakaotalk-machine-learning1_files/figure-gfm/post_hoc-1.png
 tag: [카카오톡, 전처리, 시계열, tidyverse, tidymodels, textrecipes]
 author_profile: false
 sidebar:
