@@ -2,6 +2,14 @@
 layout: default
 ---
 
+{% for post in site.related_posts limit:13 %}
+  {% if post.thumbnail_image %}
+    <a href="{{ site.baseurl }}{{ post.url }}" style="background-image: url({{ site.baseurl }}{{ post.thumbnail_image }})" alt="{{ post.title }}" class="thumbnail"></a>
+  {% else %}
+    {{ post.content | thumbnail_url: post.url, post.title }}
+  {% endif %}
+{% endfor %}
+
 {% if page.header.overlay_color or page.header.overlay_image or page.header.image %}
   {% include page__hero.html %}
 {% elsif page.header.video.id and page.header.video.provider %}
