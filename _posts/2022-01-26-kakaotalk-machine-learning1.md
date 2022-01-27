@@ -2,7 +2,6 @@
 title: "카카오톡 글 쓴이 예측 머신러닝"
 last_modified_at: 2022-01-26
 categories: [텍스트 마이닝, 머신러닝]
-thumbnail: https://raw.githubusercontent.com/cysics/cysics.github.io/master/_posts/2022-01-26-kakaotalk-machine-learning1_files/figure-gfm/post_hoc-1.png
 tag: [카카오톡, 전처리, 시계열, tidyverse, tidymodels, textrecipes]
 author_profile: false
 sidebar:
@@ -10,10 +9,13 @@ sidebar:
 toc: true
 toc_sticky: true
 toc_label: "카카오톡 글 쓴이 예측 머신러닝"
+image: /assets/images/image-default.png
 ---
 <div class="notice--success">
 머신러닝으로 3명이 쓴 글 중 특정 단어를 변수로 글 쓴이를 맞추고 어떤 단어들로 그 글쓴이를 특정하는지도 알아봅니다.
 </div>
+
+![]({{ page.image | relative_url}})
 
 ## 미션 이해
 
