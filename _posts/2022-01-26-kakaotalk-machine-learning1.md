@@ -76,6 +76,10 @@ name %in% three 는 three(3명의 이름)에 포함된 name만 선택한다는
 짧아서 사용하기 너무 편합니다. initRhino() 함수는 RHINO 패키지에서
 java와 연결해서 형태소 분석을 위한 준비에 해당됩니다.
 
+RHINO 패키지를 설치하기 위해서는 Rstudio를 실행하기 전에 Java, Rtools를 설치해야 합니다. Rstudio에서 rJava도 설치해 주어야 합니다. 아울러 RHINO는 github에서 설치해 주어야 합니다. devtools 패키지를 설치한 후 devtools::install_github("SukJaeChoi/RHINO", force=T) 로 설치할 수 있습니다.
+
+개인적으로 다른 작업을 할 때 KoNLP, RcppMeCab, RHINO 3개의 형태소 분석기를 사용해봤습니다. 형태소 분석 후 이어 붙이는 작업을 비교해보면 KoNLP가 46.25초, RcppMeCab가 34.15초, RHINO가 2.22초로 RHINO가 가장 빨랐습니다. 형태소 분석한 결과를 비교해 봐도 RHINO가 가장 많은 단어들을 뽑아내더군요. 그 이후로 형태소 분석은 RHINO만 사용합니다.
+
 str\_extract\_all() 함수는 특정 조건에 맞는 글자만 선택하는데
 사용합니다. \[가-힣\]{2,}는 2음절 이상을 의미합니다. 2\~5음절만 선택하고
 싶다면 \[가-힣\]{2,5}로 지정하면 됩니다.
