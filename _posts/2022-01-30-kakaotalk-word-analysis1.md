@@ -80,7 +80,7 @@ inspect(word_dtm <- data$형태소 %>% na.omit() %>%                       # 결
     ## Weighting          : term frequency (tf)
     ## Sample             :
     ##        Terms
-    ## Docs    ai 감사 데이터 드리 만들 발표 사람 사진 생각 프렌즈
+    ## Docs    ai 감사  데이터 드리 만들 발표 사람 사진 생각  프렌즈
     ##   12402  0    0      0    0    3    0    3    0    0      0
     ##   13660  1    2      0    0    0    3    5    0    0      0
     ##   13825  0    0      0    0    0    1    0    2    0      0
