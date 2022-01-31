@@ -139,8 +139,7 @@ x축은 단어(term)으로 설정하되 차원 축소된 값을 기준으로 정
 word_tokenizer <- function(x) NGramTokenizer(x, Weka_control(min=2, max=2))
 word_dtm_bigram <- data %>% pull(형태소) %>% 
     VectorSource() %>% VCorpus() %>%                              
-    DocumentTermMatrix(control=list(tokenize=word_tokenizer)) %>% 
-    gofastr::remove_stopwords(min.char=2, stopwords = "지 김귀훈")
+    DocumentTermMatrix(control=list(tokenize=word_tokenizer))
 word_bigram <- tidy(word_dtm_bigram) %>% group_by(term) %>% 
     summarise(count=sum(count)) %>% arrange(desc(count)) %>% 
     separate(term, c("from", "to"), sep=" ") %>% 
