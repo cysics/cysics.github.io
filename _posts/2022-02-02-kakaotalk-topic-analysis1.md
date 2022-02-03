@@ -1,5 +1,5 @@
 ---
-title: "카카오톡 토픽 분석1 (토픽수 결정)"
+title: "카카오톡 토픽 분석1 (토픽수 결정 및 토픽 분석)"
 last_modified_at: 2022-02-02
 categories: [텍스트 마이닝, 토픽 분석]
 tag: [카카오톡, 토픽 분석, tidyverse, stm]
