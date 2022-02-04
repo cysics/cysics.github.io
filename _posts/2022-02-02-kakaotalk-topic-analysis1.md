@@ -93,7 +93,7 @@ prepDocuments() 함수를 이용해서 메타데이터를 만듭니다. lower.th
 
 ``` r
 old_time <- Sys.time()
-searchK(stm_pre$documents, stm_pre$vocab, K=c(10:16), prevalence=~group+date, 
+searchK(stm_pre$documents, stm_pre$vocab, K=c(10:16), prevalence=~ group + s(date), 
         data=stm_pre$meta, set.seed(3000), verbose=F) %>% plot() 
 ```
 
@@ -119,7 +119,7 @@ system.time() 함수를 이용해서 총 걸린 시간을 출력할 수도 있�
 
 ``` r
 k <- 13
-summary(stm_topics <- stm(stm_out$documents, stm_out$vocab, K=k, prevalence=~group+date, 
+summary(stm_topics <- stm(stm_out$documents, stm_out$vocab, K=k, prevalence=~ group + s(date), 
                           data=stm_out$meta, seed=1000, init.type="Spectral"))
 ```
 
