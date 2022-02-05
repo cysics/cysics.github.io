@@ -191,7 +191,7 @@ summary(stm_topics <- stm(stm_out$documents, stm_out$vocab, K=k, prevalence=~ gr
     ##       Lift: 강요, 고교, 고대, 고자, 교수자, 낚시꾼, 독립 
     ##       Score: 메타, 버스, 도움, 질문, 수업, 서비스, 정보 
     ## Topic 12 Top Words:
-    ##       Highest Prob: 늘, 공유, 참여, 관심, 진행, 신청, 시작 
+    ##       Highest Prob: 오늘, 공유, 참여, 관심, 진행, 신청, 시작 
     ##       FREX: 링크, 과학, 들어오, 오픈, 대덕, 죄송, 검색
     ##       Lift: 검색엔진, 고고, 김밥, 김승일, 김휘경, 날짜, 마인
     ##       Score: 링크, 참여, 오늘, 신청, 유튜브, 관심, 행사 
