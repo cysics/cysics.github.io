@@ -85,7 +85,7 @@ stm_removed <- setdiff(c(1:nrow(data)), stm_topics$mu$mu %>% as.data.frame() %>%
 plot(stm_topics, type="summary", labeltype="prob", n=5, xlim=c(0, 0.45))
 ```
 
-![](https://raw.githubusercontent.com/cysics/cysics.github.io/master/_posts/2022-02-05-kakaotalk-topic-analysis2_files/figure-gfm/stm_topics_prob1-1.png)<!-- -->
+![](https://raw.githubusercontent.com/cysics/cysics.github.io/master/_posts/2022-02-05-kakaotalk-topic-analysis2_files/figure-gfm/stm_topics_prob1-1.png){:style="display:block; margin-left:auto; margin-right:auto"}
 
 토픽 발현확률이 높은 것부터 순서대로 정렬하고 각각의 토픽에서 빈도수가
 많은 단어 5개를 시각화합니다. 선의 길이가 평균 토픽 발현 확률입니다.
@@ -110,7 +110,7 @@ tidy(stm_topics) %>% group_by(topic) %>% slice_max(beta, n=10) %>% ungroup() %>%
     labs(x = NULL, y = expression(beta), title = "토픽별 빈도수가 높은 단어들")
 ```
 
-![](https://raw.githubusercontent.com/cysics/cysics.github.io/master/_posts/2022-02-05-kakaotalk-topic-analysis2_files/figure-gfm/stm_topics_prob2-1.png)<!-- -->
+![](https://raw.githubusercontent.com/cysics/cysics.github.io/master/_posts/2022-02-05-kakaotalk-topic-analysis2_files/figure-gfm/stm_topics_prob2-1.png){:style="display:block; margin-left:auto; margin-right:auto"}
 
 토픽의 개수가 많아서 산만해 보입니다. 토픽이 4\~6개 정도 되는 경우 매우
 그럴듯하게 보입니다.
@@ -132,7 +132,7 @@ scale\_y\_reordered() 함수는 reorder\_within() 함수 적용할 때 단어에
 plot(stm_topics, type="summary", labeltype="frex", n=5, xlim=c(0, 0.45))
 ```
 
-![](https://raw.githubusercontent.com/cysics/cysics.github.io/master/_posts/2022-02-05-kakaotalk-topic-analysis2_files/figure-gfm/stm_topics_frex-1.png)<!-- -->
+![](https://raw.githubusercontent.com/cysics/cysics.github.io/master/_posts/2022-02-05-kakaotalk-topic-analysis2_files/figure-gfm/stm_topics_frex-1.png){:style="display:block; margin-left:auto; margin-right:auto"}
 
 frex는 해당 토픽에서는 빈도수가 높지만 다른 토픽에서는 그렇지 않은
 배타적인 단어를 가리킵니다. 이 역시 5개를 시각화합니다.
@@ -219,7 +219,7 @@ tidy(stm_topics, matrix="gamma") %>%                                     # 문�
     scale_x_continuous(labels = percent)
 ```
 
-![](https://raw.githubusercontent.com/cysics/cysics.github.io/master/_posts/2022-02-05-kakaotalk-topic-analysis2_files/figure-gfm/stm_topics_word2-1.png)<!-- -->
+![](https://raw.githubusercontent.com/cysics/cysics.github.io/master/_posts/2022-02-05-kakaotalk-topic-analysis2_files/figure-gfm/stm_topics_word2-1.png){:style="display:block; margin-left:auto; margin-right:auto"}
 
 토픽별 평균 발현 확률과 토픽별 빈도수가 높은 단어들 중 배타적인 단어를
 시각화합니다.
