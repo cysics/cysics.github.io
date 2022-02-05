@@ -1,6 +1,6 @@
 ---
 title: "카카오톡 토픽 분석1 (토픽수 결정 및 토픽 분석)"
-last_modified_at: 2022-02-02
+last_modified_at: 2022-02-05
 categories: [텍스트 마이닝, 토픽 분석]
 tag: [카카오톡, 토픽 분석, tidyverse, stm]
 author_profile: false
@@ -53,8 +53,9 @@ data <- rdata %>%
 names_top10 <- data %>% group_by(name) %>% summarise(n=n()) %>% 
     arrange(desc(n)) %>% slice(1, 2, 3) %>% pull(name)
 
-data <- data %>% mutate(date=ym(paste0(year, "-", month))) %>%             # 월별 데이터 분석을 위해
-  mutate(group=as.factor(ifelse(name %in% names_top10, "Top3", "Others"))) # Top3와의 비교를 위해
+data <- data %>% mutate(date=ym(paste0(year, "-", month))) %>%                 # 월별 분석을 위해
+  mutate(date=as.integer(round((date-as.Date("2019-02-01"))/(365.25/12)))) %>% # 개월수로 변환
+  mutate(group=as.factor(ifelse(name %in% names_top10, "Top3", "Others")))     # Top3와의 비교를 위해
 ```
 
 rdata는 전처리가 거의 없는 데이터이고 data는 EDA나 머신러닝, 텍스트 마이닝 등에 사용될 범용적인 데이터입니다. data 파일의 comment의 글을 형태소 분석하여 “형태소”라는 변수를 추가로 만듭니다. 형태소는 명사, 동사, 형용사에 해당하는 것만 수집하며 나중에 토픽 분석을 쉽게 할 수 있도록 tibble 형태로 유지합니다.
