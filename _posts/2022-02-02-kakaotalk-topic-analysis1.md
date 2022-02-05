@@ -50,17 +50,19 @@ data <- rdata %>%
     mutate(형태소=comment %>% sapply(getMorph, "NV") %>%                # 명사, 동사, 형용사만 선택
                   sapply(paste, collapse=" "))                          # 형태소 분석 결과 합치기
 
-names_top10 <- data %>% group_by(name) %>% summarise(n=n()) %>% 
+names_top3 <- data %>% group_by(name) %>% summarise(n=n()) %>% 
     arrange(desc(n)) %>% slice(1, 2, 3) %>% pull(name)
 
 data <- data %>% mutate(date=ym(paste0(year, "-", month))) %>%                 # 월별 분석을 위해
   mutate(date=as.integer(round((date-as.Date("2019-02-01"))/(365.25/12)))) %>% # 개월수로 변환
-  mutate(group=as.factor(ifelse(name %in% names_top10, "Top3", "Others")))     # Top3와의 비교를 위해
+  mutate(group=as.factor(ifelse(name %in% names_top3, "Top3", "Others")))     # Top3와의 비교를 위해
 ```
 
 rdata는 전처리가 거의 없는 데이터이고 data는 EDA나 머신러닝, 텍스트 마이닝 등에 사용될 범용적인 데이터입니다. data 파일의 comment의 글을 형태소 분석하여 “형태소”라는 변수를 추가로 만듭니다. 형태소는 명사, 동사, 형용사에 해당하는 것만 수집하며 나중에 토픽 분석을 쉽게 할 수 있도록 tibble 형태로 유지합니다.
 
-맨 마지막 줄에 있는 코드는 토픽 분석을 위해 새로운 변수를 만드는 내용입니다. 월별 토픽 주제의 변화를 살펴보고 발언수가 많은 3명을 선정하여 해당 3명과 다른 사람들 사이의 대화 주제는 어떻게 다른지 분석하기 위해 date와 group이라는 변수를 새로 만들었습니다.
+맨 마지막 부분에 있는 코드는 토픽 분석을 위해 새로운 변수를 만드는 내용입니다. 월별 토픽 주제의 변화를 살펴보고 발언수가 많은 3명을 선정하여 해당 3명과 다른 사람들 사이의 대화 주제는 어떻게 다른지 분석하기 위해 date와 group이라는 변수를 새로 만들었습니다.
+
+우선 ym() 함수를 이용하여 월 단위의 날짜를 만들어 줍니다. 이렇게 만들어진 date에서 시작날짜를 빼주면 일단위로 차이가 구해집니다. 이를 월로 바꿔주기 위해 265.25/12의 값으로 나누어 준 후 round() 함수를 적용하면 28일, 30일, 31일에 의한 차이가 정수로 구해집니다. 하지만 이 값은 여전히 날짜 포맷이기 때문에 숫자로 바꿔주기 위해 as.integer() 함수를 적용했습니다. name에 top3에 해당하는 이름이 있는 경우 “Top3”, 그렇지 않은 경우 “Others”로 바꾸도록 했습니다. %in%는 %in% 왼쪽에 있는 값이 %in% 오른쪽에 있는지의 여부를 판단할 때 사용합니다.
 
 ### 데이터 전처리
 
