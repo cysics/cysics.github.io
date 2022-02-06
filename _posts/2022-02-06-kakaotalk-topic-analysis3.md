@@ -157,9 +157,7 @@ pheatmap(stm_cor$cor,
 토픽간의 상관관계를 바탕으로 비슷한 토픽들끼리 군집분석을 실시할 수
 있습니다.
 
-pheatmap 패키지에서 지원하는 pheatmap() 함수의 cutree\_rows와
-cutree\_cols 파라미터로 적절한 수의 군집을 구분하여 시각화할 수
-있습니다. 여기에서는 4개로 구분하였습니다.
+pheatmap 패키지에서 지원하는 pheatmap() 함수의 cutree\_rows와 cutree\_cols 파라미터로 적절한 수의 군집을 구분하여 시각화할 수 있습니다. 여기에서는 4개로 구분하였습니다만 적게는 2개로 분류할 수도 있고 3개도 가능할 것 같습니다.
 
 ### 계층적 군집분석
 
@@ -170,13 +168,9 @@ fviz_dend(stm_hc, k=4, palette="Dark2", rect=T)
 
 ![](https://raw.githubusercontent.com/cysics/cysics.github.io/master/_posts/2022-02-06-kakaotalk-topic-analysis3_files/figure-gfm/stm_clust1-1.png){:style="display:block; margin-left:auto; margin-right:auto"}
 
-유클리디안 거리를 구하여 “ward.D” 방식으로 군집분석을 실시하여 stm\_hc에
-저장합니다.
+유클리디안 거리를 구하여 “ward.D” 방식으로 군집분석을 실시한 결과를 stm\_hc에 저장합니다.
 
-factoextra 패키지의 fviz\_dend() 함수를 이용하여 계층적 군집분석 결과를
-시각화합니다. k값으로 적절한 군집의 수를 지정합니다. 앞에서와 마찬가지로
-4개로 설정하였습니다. rect 파라미터를 TRUE로 지정하면 군집별로 점선으로
-묶여져서 표현됩니다.
+factoextra 패키지의 fviz\_dend() 함수를 이용하여 계층적 군집분석 결과를 시각화합니다. k값으로 적절한 군집의 수를 지정합니다. rect 파라미터를 TRUE로 지정하면 군집별로  묶여져서 표현됩니다. 통계적으로 유의한지의 여부나 상관계수보다는 변수들간의 군집관계를 확인할 때 주로 사용합니다. 앞에서와 마찬가지로 4개로 설정하였습니다만 pheatmap 분석 결과와 마찬가지로 크게는 2개도 가능하고 3개도 가능할 것 같습니다.
 
 ### 토픽별 상관관계 시각화
 
