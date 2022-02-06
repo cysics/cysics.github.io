@@ -129,21 +129,6 @@ stm_cor$cor
 
 topicCorr() 함수를 이용하여 상관계수를 구합니다. 리스트 형태로 결과가 나오기 때문에 상관계수를 구한 stm_cor$cor에서 그 결과를 확인할 수 있습니다. 문제는 토픽명이 없는 형태로 제공이 되기 때문에 행과 열의 이름을 붙여 넣어야 합니다. Topic 1, Topic2 와 같은 방식으로 Topic 1에서 Topic 13까지 paste0() 함수로 만들어서 colum name과 row name을 바꿔줍니다. 행과 열의 이름을 붙여 넣어주면 위와 같은 결과를 볼 수 있습니다.
 
-### 토픽별 상관계수 시각화
-
-``` r
-chart.Correlation(stm_cor$cor)
-```
-
-![](https://raw.githubusercontent.com/cysics/cysics.github.io/master/_posts/2022-02-06-kakaotalk-topic-analysis3_files/figure-gfm/stm_cor1-1.png){:style="display:block; margin-left:auto; margin-right:auto"}
-
-PerformanceAnalytics 패키지에서 지원하는 chart.Correlation() 함수는
-상관계수는 물론이고 통계적 유의도를 별표로 표시해주기 때문에 매우
-직관적으로 상관계수를 확인할 수 있습니다. 특히 상관계수가 큰 경우 숫자가
-크게 표시되기 때문에 원하는 결과를 매우 빠르게 확인할 수 있습니다.
-도수분포와 함께 산점도까지 확인할 수 있어서 상관계수를 확인할 때 자주
-사용합니다.
-
 ### 토픽별 상관계수와 군집화
 
 ``` r
