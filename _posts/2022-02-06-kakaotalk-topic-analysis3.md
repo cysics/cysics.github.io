@@ -1,5 +1,5 @@
 ---
-title: "카카오톡 토픽 분석3 (토픽간 상관관계)"
+title: "카카오톡 토픽 분석3 (토픽간 상관관계와 군집분석)"
 last_modified_at: 2022-02-06
 categories: [텍스트 마이닝, 토픽 분석]
 tag: [카카오톡, 토픽 분석, tidyverse, stm]

@@ -1,5 +1,5 @@
 ---
-title: "카카오톡 토픽 분석4 (변수에 따른 토픽 발현확률)"
+title: "카카오톡 토픽 분석4 (다양한 변수에 따른 토픽 발현확률)"
 last_modified_at: 2022-02-07
 categories: [텍스트 마이닝, 토픽 분석]
 tag: [카카오톡, 토픽 분석, tidyverse, stm]
