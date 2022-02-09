@@ -353,7 +353,7 @@ summary(stm_fit <- estimateEffect(formula=1:k ~ group + s(date),
 ``` r
 plot(stm_fit, covariate="date", model=stm_topics, method = "continuous", topics = 9, 
      printlegend = T, xaxt = "n", xlab = "Time")
-monthseq <- seq(from = as.Date("2019-02-01"), to = as.Date("2021-12-01"), by = "month")
+monthseq <- seq(from = as.Date("2019-02-01"), to = as.Date("2022-01-01"), by = "month")
 axis(1, at = 0:max(data$date), labels = as.Date(monthseq))
 ```
 
@@ -406,7 +406,7 @@ stm_date %>% ggplot(aes(group=topic, color=topic)) +
 
 토픽 1개가 아닌 2개의 토픽을 비교해서 시각화하고 싶을 때도 있습니다. 이 때에는 extract.estimateEffect() 함수에서 topics에 두 개의 토픽을 지정해 주어야 합니다. 그리고 토픽을 서로 다른 색으로 구분해서 시각화를 해야하기 때문에 topic을 factor로 만들어 줍니다. covariate.value값은 x축으로 사용할 변수인데 숫자로 되어 있는 것을 날짜로 바꿔 주어야 합니다. 이 때 토픽이 2개이기 때문에 rep() 함수를 이용하여 토픽의 개수만큼 반복해서 날짜를 만들어 주어야 합니다. 위 예제에서는 2개의 토픽이기 때문에 rep(seq(), 2) 형태로 표현하였습니다. 만약 토픽이 3개인 경우 2대신 3으로 입력해야 합니다.
 
-기본적인 시각화는 앞선 포스트에서 설명한 내용과 큰 차이가 없습니다. 이전에 볼 수 없었던 scale\_color\_manual() 함수만 추가로 설명하겠습니다. 그룹으로 topic을 설정하면 토픽별로 그래프를 그려주긴 하지만 둘 다 검정색으로 표현됩니다. color까지 topic으로 설정해주어야 두 토픽이 서로 다른 색으로 표현됩니다. 디폴트로 제공해주는 색이 있긴 한데 비슷한 분석을 많이 하다보면 일률적인 색깔이 조금 불편할 때가 있습니다. 이럴 때 scale\_color\_manual() 함수를 이용하여 색을 임의로 바꿀 수 있습니다. 여기서는 tomato와 royalblue로 약간의 변화를 주어봤습니다. 위의 예제와 같이 미리 정의된 색의 이름으로 그래프의 색을 변화시킬 수도 있지만 \#으로 시작하는 색상코드를 이용하여 표현할 수도 있습니다. [색에 대한 다양한 정보](https://m.blog.naver.com/PostView.naver?isHttpsRedirect=true&blogId=keb0105&logNo=60031502918) 링크를 통해 구체적인 색을 비교해보고 색의 이름이나 색상코드 정보를 얻어서 적용할 수 있습니다. 참고로 모든 색의 이름을 다 쓸 수 있는 것은 아닙니다만 웬만한 색 이름은 잘 적용될 것입니다.
+기본적인 시각화는 앞선 포스트에서 설명한 내용과 큰 차이가 없습니다. 이전에 볼 수 없었던 scale\_color\_manual() 함수만 추가로 설명하겠습니다. 그룹으로 topic을 설정하면 토픽별로 그래프를 그려주긴 하지만 둘 다 검정색으로 표현됩니다. color까지 topic으로 설정해주어야 두 토픽이 서로 다른 색으로 표현됩니다. 디폴트로 제공해주는 색이 있긴 한데 비슷한 분석을 많이 하다보면 일률적인 색깔이 조금 불편할 때가 있습니다. 이럴 때 scale\_color\_manual() 함수를 이용하여 색을 임의로 바꿀 수 있습니다. 여기서는 tomato와 royalblue로 약간의 변화를 주어봤습니다. 위의 예제와 같이 미리 정의된 색의 이름으로 그래프의 색을 변화시킬 수도 있지만 \#으로 시작하는 색상코드를 이용하여 표현할 수도 있습니다. [색에 대한 다양한 정보](https://m.blog.naver.com/PostView.naver?isHttpsRedirect=true&blogId=keb0105&logNo=60031502918){:target="_blank"} 링크를 통해 구체적인 색을 비교해보고 색의 이름이나 색상코드 정보를 얻어서 적용할 수 있습니다. 참고로 모든 색의 이름을 다 쓸 수 있는 것은 아닙니다만 웬만한 색 이름은 잘 적용될 것입니다.
 
 ### 선형 회귀 분석
 
