@@ -74,7 +74,8 @@ stm_topics <- stm(stm_out$documents, stm_out$vocab, K=k, prevalence=~group+s(dat
 stm_removed <- setdiff(c(1:nrow(data)), stm_topics$mu$mu %>% as.data.frame() %>% names() %>% as.numeric())
 ```
 
-데이터 전처리, 토픽분석 과정입니다. 이전 글에서 설명한 내용 그대로입니다. [이전 포스트](https://cysics.github.io/텍스트%20마이닝/토픽%20분석/kakaotalk-topic-analysis3/){:target="_blank"} 에서 topicCorr() 함수로 상관계수를 구하고 pheatmap() 함수로
+데이터 전처리, 토픽분석 과정입니다. 이전 글에서 설명한 내용 그대로입니다. 
+[이전 포스트](https://cysics.github.io/텍스트%20마이닝/토픽%20분석/kakaotalk-topic-analysis3){:target="_blank"} 에서 topicCorr() 함수로 상관계수를 구하고 pheatmap() 함수로
 군집분석했었습니다. 그 결과는 다음과 같습니다.
 
 
