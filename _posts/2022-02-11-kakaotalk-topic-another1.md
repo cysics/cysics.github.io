@@ -74,52 +74,7 @@ stm_topics <- stm(stm_out$documents, stm_out$vocab, K=k, prevalence=~group+s(dat
 stm_removed <- setdiff(c(1:nrow(data)), stm_topics$mu$mu %>% as.data.frame() %>% names() %>% as.numeric())
 ```
 
-데이터 전처리, 토픽분석 과정입니다. 이전 글에서 설명한 내용 그대로입니다. 
-[이전 포스트](https://cysics.github.io/텍스트%20마이닝/토픽%20분석/kakaotalk-topic-analysis3){:target="_blank"} 에서 topicCorr() 함수로 상관계수를 구하고 pheatmap() 함수로
-군집분석했었습니다. 그 결과는 다음과 같습니다.
-
-
-![](https://raw.githubusercontent.com/cysics/cysics.github.io/master/_posts/2022-02-06-kakaotalk-topic-analysis3_files/figure-gfm/stm_cor2-1.png){:style="display:block; margin-left:auto; margin-right:auto"}
-
-이와 동일한 작업을 조금 다르게 표현하여 동일한 결과를 얻어낼 수 있습니다.
-
-### 상관계수를 이용한 군집분석
-
-``` r
-make.dt(stm_topics, meta=stm_out$meta) %>% 
-    select(grep("Topic", names(.))) %>% 
-    cor() %>% 
-    pheatmap(display_numbers=T, number_color="black", 
-             cutree_rows=4, cutree_cols=4)
-```
-
-![](https://raw.githubusercontent.com/cysics/cysics.github.io/master/_posts/2022-02-11-kakaotalk-topic-analysis8_files/figure-gfm/stm_analysis1-1.png){:style="display:block; margin-left:auto; margin-right:auto"}
-
-make.dt() 함수는 토픽모델 만들 때 제거된 행을 제외한 나머지에 대한 토픽
-발현 확률과 data의 다양한 정보를 합쳐 놓은 형태의 데이터를 만들어
-줍니다. 그 중에 select() 함수와 grep() 함수를 이용하여 “Topic”이 들어간
-열만 선택합니다. 그리고 cor() 함수로 상관계수를 구하고 pheatmap() 함수로
-군집분석을 실시하면 위와 같은 결과를 얻을 수 있습니다.
-
-그런데 토픽이 13개나 되기 때문에 어떤 글이 특정 토픽이 될 가능성이 매우
-낮은 것이 일반적일 수밖에 없다. 결국 토픽발현 확률을 보면 정규분포를
-그리지 않습니다.
-
-### 상관계수 및 도수 분포표 보기
-
-``` r
-make.dt(stm_topics, meta=stm_out$meta) %>% 
-    select(grep("Topic", names(.))) %>% 
-    chart.Correlation()
-```
-
-![](https://raw.githubusercontent.com/cysics/cysics.github.io/master/_posts/2022-02-11-kakaotalk-topic-analysis8_files/figure-gfm/stm_analysis2-1.png){:style="display:block; margin-left:auto; margin-right:auto"}
-
-도수 분포표를 보면 왼쪽으로 매우 많이 치우진 형태를 보입니다. 따라서
-pearson 상관계수를 구하기 보다는 spearman 상관계수를 구하는 것이 더
-타당합니다. topicCorr() 함수에서는 spearman 상관계수를 출력할 수
-없었는데 make.dt() 함수로 토픽 발현 확률을 끄집어 내면 얼마든지 spearman
-상관계수를 구할 수 있습니다.
+데이터 전처리, 토픽분석 과정입니다. 이전 글에서 설명한 내용 그대로입니다. 이전 포스트에서 topicCorr() 함수로 상관계수를 구하고 pheatmap() 함수로 군집분석했었습니다. 이 때 구한 상관계수는 모수 분석인 pearson 상관계수입니다. 하지만 토픽이 13개나 되기 때문에 어떤 글이 특정 토픽이 될 가능성은 매우 낮습니다. 결국 토픽발현 확률을 보면 정규분포를 그리지 않습니다. 이런 경우 비모수 분석인 spearman 방식으로 상관계수를 구해야 합니다. 그럼 어떻게 비모수 상관계수를 구할 수 있을까요?
 
 ### spearman 상관계수로 군집화하기
 
@@ -133,12 +88,9 @@ make.dt(stm_topics, meta=stm_out$meta) %>%
 
 ![](https://raw.githubusercontent.com/cysics/cysics.github.io/master/_posts/2022-02-11-kakaotalk-topic-analysis8_files/figure-gfm/stm_analysis3-1.png){:style="display:block; margin-left:auto; margin-right:auto"}
 
-pearson 상관계수로 군집분석한 결과와 아주 조금 차이가 있습니다. 토픽 두
-어개의 군집이 바뀌었습니다. 그 이외에도 토픽간 상관계수가 더 커진 것을
-알 수 있습니다. 비슷한 토픽들끼리 더 잘 묶여진 것을 확인할 수 있습니다.
+make.dt() 함수를 이용하면 토픽발현확률과 함께 원본 데이터(data)를 합친 data.frame을 얻을 수 있습니다. 토픽분석할 때 단어 수가 너무 적어서 자동으로 제외된 데이터는 표현되지 않습니다. 이렇게 뽑아낸 데이터를 이용하면 토픽간의 상관관계는 물론 다른 변수와의 상관관계, 회귀분석 등에 사용할 수 있습니다. 여기서는 select() 함수와 grep() 함수를 이용하여 Topic이라는 글자가 포함된 토픽 발현 확률만 뽑아내었습니다. 
 
-spearman 상관계수는 cor() 함수에 method를 spearman으로 입력하면 구할 수
-있습니다.
+pearson 상관계수로 군집분석한 결과와 같게 군집화된 것도 있지만 그렇지 않은 것도 있습니다. spearman 상관계수는 cor() 함수에 method를 spearman으로 입력하면 구할 수 있습니다.
 
 위와 같이 spearman 상관계수를 이용해서 군집분석한 결과를 반영하여 비슷한
 토픽끼리 묶어보겠습니다.
