@@ -2,7 +2,7 @@
 title: "카카오톡 토픽 분석7 (회귀분석 상호작용)"
 last_modified_at: 2022-02-10
 categories: [텍스트 마이닝, 토픽 분석]
-tag: [카카오톡, 토픽 분석, 회귀분석, 상호작용 tidyverse, stm]
+tag: [카카오톡, 토픽 분석, 회귀분석, 상호작용, tidyverse, stm]
 author_profile: false
 sidebar:
   nav: "docs"
