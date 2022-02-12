@@ -74,8 +74,8 @@ stm_topics <- stm(stm_out$documents, stm_out$vocab, K=k, prevalence=~group+s(dat
 
 데이터 전처리, 토픽분석 과정입니다. 이전 글에서 설명한 내용
 그대로입니다. 다만 하나 추가된 패키지가 있는데 LDAvis가 바로 그것입니다.
-LDA 토픽분석 결과를 시각화하는 패키지입니다. [지난
-포스트](https://cysics.github.io/텍스트 마이닝/토픽 분석/kakaotalk-topic-analysis2/){:target="\_blank"}
+LDA 토픽분석 결과를 시각화하는 패키지입니다. 
+[지난 포스트](https://cysics.github.io/텍스트 마이닝/토픽 분석/kakaotalk-topic-analysis2/){:target="\_blank"}
 에서는 토픽별 빈도수가 높은 단어나 배타적인 단어들을 시각화해서 토픽을
 이해하려고 노력했었습니다. 이번에는 조금 더 역동적으로 토픽별 관련있는
 단어들을 시각화해봅시다.
@@ -87,10 +87,14 @@ stm_likeLDA <- toLDAvisJson(mod=stm_topics, docs=stm_out$documents)  # jason 파
 Encoding(stm_likeLDA) <- "unknown"                                   # 한글 깨짐을 해결하기 위해
 serVis(stm_likeLDA)
 ```
+![](https://raw.githubusercontent.com/cysics/cysics.github.io/master/_posts/2022-02-12-kakaotalk-topic-analysis9_files/figure-gfm/stm_likeLDA.jpg){:style="display:block; margin-left:auto; margin-right:auto"}
 
 toLDAvisJson() 함수를 써서 STM 분석 결과를 json 파일 형태로 만들어
 줍니다. 이를 곧바로 serVis() 함수로 시각화하면 한글이 깨집니다. 인코딩을
 unknown으로 바꿔주면 한글이 깨지지 않고 잘 출력됩니다.
+
+실제로 RStudio에서 실행하면 Viewer 탭을 통해 볼 수 있고 토픽 숫자에 마우스 커서를 올려 놓으면 해당 단어들을 볼 수 있습니다. 아이콘 중에 "Show in new window"를 클릭하면 크롬이나 엣지 브라우저로 볼 수 있습니다.
+
 
 ### 토픽내 단어의 범주별 차이
 
