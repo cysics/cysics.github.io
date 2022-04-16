@@ -18,7 +18,7 @@ toc_label: "이미지 전처리1"
 
 ## 최종 결과 확인
 
-![](2022-04-16-digitizing_files/figure-gfm/result01.png){:style="display:block; margin-left:auto; margin-right:auto"}
+![](https://raw.githubusercontent.com/cysics/cysics.github.io/master/_posts/2022-04-16-digitizing_files/figure-gfm/result01.png){:style="display:block; margin-left:auto; margin-right:auto"}
 
 ### 이미지 오리기
 
@@ -27,7 +27,7 @@ toc_label: "이미지 전처리1"
 pacman::p_load(imager, magick, tidyverse)                  # 데이터 전처리 관련 패키지
 
 #### 2. 이미지 오리기 ####
-img <- image_read('data/sample1.jpg') %>% image_scale("328x246")   # magick 패키지 활용(빠르고 이미지 겹치기 가능)
+img <- image_read('data/sample1.jpg') %>% image_scale("328x246")   # magick 패키지 활용
 paste1 <- image_crop(img, "75x20+10+130") %>% image_rotate(90)     # 배경 : 가로*세로 +x좌표+y좌표
 paste2 <- image_crop(img, "15x15+165+100")                         # 청경채
 paste1 %>% magick2cimg() %>% plot()
@@ -58,15 +58,15 @@ paste2 %>% magick2cimg() %>% plot()
 ``` r
 ez_seg <- function(file="data/sample1.jpg", p1=paste1, p2=paste2, k=1, reverse_ok=FALSE){
   img <- image_read(file) %>% image_scale("328x246")                   # 이미지 불러서 크기를 줄인다.
-  img <- image_composite(img, p1, offset="+0+100") %>%                 # 배경 붙이기(0,100) 위치에 붙인다.
-    image_composite(p2, offset="+165+100")                             # 청경채 붙이기 (165,100) 위치에 붙인다.
-  img <- magick2cimg(img)                                              # magick 데이터를 imager 데이터로 바꾼다.
+  img <- image_composite(img, p1, offset="+0+100") %>%                 # 배경 붙이기(0,100) 
+    image_composite(p2, offset="+165+100")                             # 청경채 붙이기 (165,100) 
+  img <- magick2cimg(img)                                              # imager 데이터로 바꾼다.
 
   px.fg <- ((Xc(img) %inr% c(165, 180)) & (Yc(img) %inr% c(100, 130))) # 좌표 설정
   px.bg <- ((Xc(img) %inr% c(0, 20)) & (Yc(img) %inr% c(100,175)))     # x시작, x끝, y시작, y끝
   
   im.lab <- sRGBtoLab(img)                                             # RGB를 CIELAB 형태로 바꾼다.
-  cvt.mat <- function(px) matrix(im.lab[px], sum(px)/3, 3)             # 이하 코드는 솔직히 잘 모르겠다.
+  cvt.mat <- function(px) matrix(im.lab[px], sum(px)/3, 3)             # 이하 코드는 잘 모르겠다.
   fgMat <- cvt.mat(px.fg)
   bgMat <- cvt.mat(px.bg)
   labels <- c(rep(1, nrow(fgMat)), rep(0, nrow(bgMat)))
@@ -75,7 +75,7 @@ ez_seg <- function(file="data/sample1.jpg", p1=paste1, p2=paste2, k=1, reverse_o
   out <- labels[as.vector(out$nn.idx)] %>% matrix(dim(out$nn.idx)) %>% rowMeans
   msk <- as.cimg(rep(out, 3), dim=dim(img))                            # 마스크 형태로 만든다.
   final <- as.pixset(1-threshold(msk,"16%"))                           # 이미지 반전
-  ifelse(reverse_ok, return(final), return(msk))                       # reverse_ok가 true이면 반전결과 출력
+  ifelse(reverse_ok, return(final), return(msk))                       # 반전결과 출력
 }
 load.image('data/sample1.jpg') %>% resize(328, 246) %>% plot()
 ```
@@ -102,7 +102,7 @@ ez_seg('data/sample1.jpg', k=1) %>% resize(33, 25) %>% plot()
 
 청경채와 배경을 구분하는 코드를 적용하기 위해 magick 파일을 imager에서
 사용할 수 있는 형태로 바꾸었습니다. 나머지 코드는 [이
-사이트](https://dahtah.github.io/imager/foreground_background.html)를
+사이트](https://dahtah.github.io/imager/foreground_background.html){:target="_blank"}를
 참고했습니다.
 
 위의 결과물은 imager에서 이미지를 불러서 1/10 수준으로 줄인 다음
