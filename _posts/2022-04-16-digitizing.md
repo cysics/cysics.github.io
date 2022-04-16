@@ -1,6 +1,6 @@
 ---
 title: "데이콘(생육 환경 최적화 경진대회) : 이미지 전처리1"
-last_modified_at: 2022-02-12
+last_modified_at: 2022-04-16
 categories: [데이콘, 이미지 전처리]
 tag: [데이콘, 최적화, 이미지, 전처리]
 author_profile: false
