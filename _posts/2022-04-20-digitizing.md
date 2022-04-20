@@ -12,12 +12,10 @@ toc_label: "이미지 전처리2"
 ---
 
 <div class="notice--success">
-
 데이콘(생육 환경 최적화 경진대회) : 잎의 넓이를 어떻게 정확하게 측정할 수 있을까?
-
 </div>
 
-## 최종 결과 확인1
+## 최종 결과물 확인
 
 ![](https://raw.githubusercontent.com/cysics/cysics.github.io/master/_posts/2022-04-20-digitizing_files/figure-gfm/apply-1.png){:style="display:block; margin-left:auto; margin-right:auto"}
 이미지 마스킹을 해서 픽셀값을 모두 합한 값(sum)과 실제 잎의 무게(leaf\_weight)의 관계입니다.
